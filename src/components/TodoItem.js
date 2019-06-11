@@ -5,10 +5,10 @@ class TodoItems extends Component {
     render(){
         return(
             
-                <div style={this.getStyle()}>
+                <div >
                     <p>
-                    <input type="checkbox" onChange={this.props.markComplete} /> {' '}
-                    {this.props.todo.title}</p>
+                    {/* <input type="checkbox" onChange={this.props.markComplete} /> {' '} */}
+                    {this.props.todo}</p>
                 </div>
            
         );

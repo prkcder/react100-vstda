@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import TodoItem from './TodoItem'
-// import PropTypes from 'prop-types';
+import TodoItem from './TodoItem'
+import PropTypes from 'prop-types';
 
 class ViewTodos extends Component {
     render(){
@@ -13,9 +13,9 @@ class ViewTodos extends Component {
                         </div>
                         <div className="card-body">
                             hello
-                        {/* {this.props.todos.map((todo)=> {
-                        return <TodoItem key={todo.id} todo={todo} markComplete={this.props.markComplete} />;
-                        })} */}
+                        {this.props.todos.map((item)=> {
+                        return <TodoItem key={item.id} todo={item.todo}  />;
+                        })}
                         </div>
                     </div>
                 </div>
@@ -24,8 +24,8 @@ class ViewTodos extends Component {
     }
 }
 
-        // ViewTodos.propTypes = {
-        //     todo: PropTypes.array.isRequired
-        // }
+        ViewTodos.propTypes = {
+            todos: PropTypes.array.isRequired
+        }
 
 export default ViewTodos;

@@ -1,6 +1,25 @@
 import React, { Component } from 'react';
 
 class NewTodos extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            addTodo: "",
+            selectPriority: "select"
+        }
+        this.handleChange = this.handleChange.bind(this)
+    };
+
+    handleChange(e) {
+    this.setState({[e.target.name]: e.target.value});
+    console.log("it was press");
+    
+  }
+
+
+
+
+
     render() {
         return(
             
@@ -12,13 +31,13 @@ class NewTodos extends Component {
                         <div className="card-body">
                             <div className="form-group">
                                 <label> I want to..</label>
-                                <textarea className="create-todo-text"></textarea>
+                                <textarea className="create-todo-text" name="addTodo" value={this.state.addTodo} onChange={this.handleChange} ></textarea>
                             </div>
                             <div className="form-group">
                                 <label>How much of a priority is this?</label>
                                 <div>
-                                    <select className="create-todo-priority form-control" >
-                                        <option defaultValue="true" disabled="disabled">
+                                    <select className="create-todo-priority form-control" name="selectPriority" value={this.state.selectPriority} onChange={this.handleChange} >
+                                        <option value="select" >
                                             Select a Priority
                                         </option>
                                         <option value="1">
@@ -35,7 +54,7 @@ class NewTodos extends Component {
                             </div>
                         </div>
                         <div className="card-footer">
-                            <button className="btn btn-success btn-block" onChange={this.props.handleChange}>Add</button>
+                            <button className="btn btn-success btn-block" onClick={() => this.props.handleSubmit(this.state.addTodo, this.state.selectPriority)} >Add</button>
                         </div>
                     </div>
                 </div>
