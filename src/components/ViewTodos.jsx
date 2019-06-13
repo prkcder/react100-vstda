@@ -12,9 +12,9 @@ class ViewTodos extends Component {
                             View Todos
                         </div>
                         <div className="card-body">
-                            hello
-                        {this.props.todos.map((item)=> {
-                        return <TodoItem key={item.id} todo={item.todo}  />;
+                        
+                        {this.props.todosList.map((item)=> {
+                        return <TodoItem key={item.id} todo={item.todo} priority={item.priority} id={item.id} completed={item.completed} handleCheck={this.props.handleCheck}/>;
                         })}
                         </div>
                     </div>
@@ -25,7 +25,7 @@ class ViewTodos extends Component {
 }
 
         ViewTodos.propTypes = {
-            todos: PropTypes.array.isRequired
+            todosList: PropTypes.array.isRequired
         }
 
 export default ViewTodos;

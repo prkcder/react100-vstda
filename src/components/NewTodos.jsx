@@ -37,7 +37,7 @@ class NewTodos extends Component {
                                 <label>How much of a priority is this?</label>
                                 <div>
                                     <select className="create-todo-priority form-control" name="selectPriority" value={this.state.selectPriority} onChange={this.handleChange} >
-                                        <option value="select" >
+                                        <option value="select"disabled >
                                             Select a Priority
                                         </option>
                                         <option value="1">
@@ -54,7 +54,9 @@ class NewTodos extends Component {
                             </div>
                         </div>
                         <div className="card-footer">
+                            
                             <button className="btn btn-success btn-block" onClick={() => this.props.handleSubmit(this.state.addTodo, this.state.selectPriority)} >Add</button>
+                            
                         </div>
                     </div>
                 </div>
