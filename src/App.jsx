@@ -12,40 +12,31 @@ class App extends Component {
       // selectPriority: "Select a Priority",
       todosList: []
     }
-    // this.handleChange = this.handleChange.bind(this);
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
+    // this.handleDelete = this.handleDelete.bind(this);
+    // this.handleEdit = this.handleEdit.bind(this);
+    this.handleSave =this.handleSave.bind(this);
   }
 
-  // handleChange(e) {
-  //   this.setState({[e.target.name]: e.target.value});
-  //   console.log("it was press");
-    
-  // }
-
+handleSave() {
+  console.log("saved");
+}
+// handleDelete(id) {
+//   const todosList = [...this.state.todosList];
+//   const updatedList = todosList.filter(item => item.id !== id);
+//   this.setState({todosList: updatedList});
+// }
 
 
   handleCheck(id) {
-      //  console.log("clicked");    
-    // if (this.states.todos.completed === true) {
-    //     return "line-through" 
-    // } else "none"
-
-
     this.setState({todosList: this.state.todosList.map((item) => {
       if(item.id == id) {
         item.completed = !item.completed
       }
       return item
-    })})
-
-    // let listArr = this.state.todosList;
-    // for(var i=0; i<listArr.length; i++) {
-    //   if(listArr[i].id == id) {
-    //         listArr[i].completed = !listArr[i].completed;
-    //       }
-    // }
-    //   this.setState({todosList: listArr});
+    })});
 }
 
 
@@ -108,6 +99,21 @@ class App extends Component {
     console.log("clciked");
   }
 
+  // handleEdit(id) {
+
+  //   this.setState({handleEditMode: !this.state.handleEditMode});
+  // //   var editList = [...this.state.todosList];
+  // //   const index = editList.findIndex(item => item.id === id);
+  // //  editList[index].addTodo = this.state.editedTodo;
+  // //  editList[index].selectPriority = this.state.editedPriority;
+  // //   this.setState({
+  // //     toDoList: editList
+  // //   });
+
+
+  //   console.log("edit was pressed");
+  // }
+
   render() {
     
     return (
@@ -116,7 +122,7 @@ class App extends Component {
         <hr />
         <div className="row">
           <NewTodos handleSubmit={this.handleSubmit}  />
-          <ViewTodos todosList={this.state.todosList} handleCheck={this.handleCheck}/>
+          <ViewTodos todosList={this.state.todosList} handleCheck={this.handleCheck}/* handleDelete={this.handleDelete} handleEdit={this.handleEdit}*/ handleSave={this.handleSave}/>
 
         </div>
       </div>

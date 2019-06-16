@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 class ViewTodos extends Component {
     render(){
+        
         return(
             
                 <div className="col-md-8">
@@ -14,7 +15,7 @@ class ViewTodos extends Component {
                         <div className="card-body">
                         
                         {this.props.todosList.map((item)=> {
-                        return <TodoItem key={item.id} todo={item.todo} priority={item.priority} id={item.id} completed={item.completed} handleCheck={this.props.handleCheck}/>;
+                        return <TodoItem key={item.id} todo={item.todo} priority={item.priority} id={item.id} completed={item.completed} handleCheck={this.props.handleCheck} /*handleDelete={this.props.handleDelete} handleEdit={this.props.handleEdit}*/ handleSave={this.props.handleSave}/>;
                         })}
                         </div>
                     </div>

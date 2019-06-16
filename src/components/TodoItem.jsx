@@ -35,13 +35,33 @@ function lineThrough(completed) {
 
 
 class TodoItems extends Component {
-    // constructor(props) {
-        //     super(props);
+    constructor(props) {
+            super(props);
         
-        //     this.markComplete = this.markComplete.bind(this);
-        // }
+            
+            
+            this.state ={
+                todo: this.props.addTodo,
+                priority: this.props.selectPriority,
+                handleEditMode: false
+                }
+                //     this.markComplete = this.markComplete.bind(this);
+                this.handleChange = this.handleChange.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
+        }
         
-        
+        handleEdit(id) {
+            this.setState({handleEditMode: !this.state.handleEditMode})
+    //         let copy = this.props.todoList;
+    // for (let i = 0; i < copy.length; i++) {
+    //   if (copy[i].id == id) {
+    //     copy[i].editEnabled = !copy[i].editEnabled;
+    //   }
+    // }
+    // this.setState({ todoList: copy });
+  
+            console.log("edit this")
+        }
         // markComplete() {
             
             //         if (this.props.todos.completed === true) {
@@ -50,7 +70,9 @@ class TodoItems extends Component {
                 
                 // }
                 
-               
+                handleChange(e) {
+                    this.setState({[e.target.name]: e.target.value});
+                  }
                 
                 
                 
@@ -69,7 +91,7 @@ class TodoItems extends Component {
                     //         // default: return "default";
                     //     }
                     // }
-
+                    // const {}
                     var colorPriority = ""
                     switch (this.props.priority) {
                         case "1":
@@ -87,18 +109,99 @@ class TodoItems extends Component {
 
                     return(
                         <div >
-                    <p className={/*`list-group-item-${selectPriority(this.props.priority)}`*/ colorPriority}>
+                    <h6 className={/*`list-group-item-${selectPriority(this.props.priority)}`*/ colorPriority } >
                     <input type="checkbox" checked={this.props.completed} onChange={() => this.props.handleCheck(this.props.id)} />
                     <span style={{textDecoration: lineThrough(this.props.completed)}}>{this.props.todo}</span>
-                    <a className="edit-todo">
+
+
+                    {this.state.handleEditMode  ?  (<div className={colorPriority} >
+
+
+<div className="form-group">
+    <label htmlFor="description"> Description</label>
+    <textarea className="update-todo-text" name="description" value={this.state.editTodo} onChange={this.handleChange} ></textarea>
+</div>
+<div className="form-group">
+    <label htmlFor="priority">Priority</label>
+     <select className="update-todo-priority" name="priority" value={this.state.editPriority} onChange={this.handleChange} >
+            <option value="select" disabled >
+                Select a Priority
+            </option>
+            <option value="1">
+                High Priority
+            </option>
+            <option value="2">
+                Medium Priority
+            </option>
+            <option value="3">
+                Low Priority
+            </option>
+    </select>
+    
+</div>
+
+<button className="btn btn-success update-todo " onClick={() => this.props.handleSave()} >Save</button>
+
+</div>): null}
+
+
+
+
+                    <div className="float-right">
+                    <a className="edit-todo" style={{ cursor: 'pointer' }} onClick={() => this.handleEdit()}>
                         <i className="far fa-edit"></i> 
                     </a>
 
-                    <a className="delete-todo">
+                    {/* <a className="delete-todo" style={{ cursor: 'pointer' }} onClick={() => this.props.handleDelete(this.props.id)}>
                         <i className="fas fa-trash-alt"></i>  
-                    </a>
-                    </p>
+                    </a> */}
+                    </div>
+                    </h6>
+
+
+
+
+
+
+                     {/* {this.state.handleEditMode  ?  (<div className={colorPriority} >
+
+
+                    <div className="form-group">
+                        <label htmlFor="description"> Description</label>
+                        <textarea className="update-todo-text" name="description" value={this.state.addTodo} onChange={this.handleChange} ></textarea>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="priority">Priority</label>
+                         <select className="update-todo-priority" name="priority" value={this.state.selectPriority} onChange={this.handleChange} >
+                                <option value="select" disabled >
+                                    Select a Priority
+                                </option>
+                                <option value="1">
+                                    High Priority
+                                </option>
+                                <option value="2">
+                                    Medium Priority
+                                </option>
+                                <option value="3">
+                                    Low Priority
+                                </option>
+                        </select>
+                        
+                    </div>
+
+                    <button className="btn btn-success update-todo " onClick={() => this.props.handleSave()} >Save</button>
+
+                </div>): null}
+
+ */}
+
+
+
+                    
+                    
                 </div>
+           
+
            
         );
     }
