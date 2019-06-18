@@ -15,7 +15,17 @@ class ViewTodos extends Component {
                         <div className="card-body">
                         
                         {this.props.todosList.map((item)=> {
-                        return <TodoItem key={item.id} todo={item.todo} priority={item.priority} id={item.id} completed={item.completed} handleCheck={this.props.handleCheck} /*handleDelete={this.props.handleDelete} handleEdit={this.props.handleEdit}*/ handleSave={this.props.handleSave}/>;
+                        return <TodoItem key={item.id} 
+                        todosList={this.props.todosList}
+                        addTodo={item.addTodo} 
+                        selectPriority={item.selectPriority} 
+                        id={item.id} 
+                        completed={item.completed} 
+                        handleEdit={item.handleEdit}
+                        handleCheck={this.props.handleCheck} 
+                        handleDelete={this.props.handleDelete} 
+                        handleEditMode={this.props.handleEditMode}
+                        handleSave={this.props.handleSave}/>;
                         })}
                         </div>
                     </div>
