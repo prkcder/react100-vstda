@@ -12,8 +12,11 @@ class ViewTodos extends Component {
                         <div className="card-header">
                             View Todos
                         </div>
-                        <div className="card-body">
-                        
+                        <div >
+                        <div className="list-group-item-success form-group">
+                            <span htmlFor="intro"><strong>Welcome to Very Simple Todo App!</strong></span>
+                            <p name="intro">Get started now by adding a new todo on the left.</p>
+                        </div>
                         {this.props.todosList.map((item)=> {
                         return <TodoItem key={item.id} 
                         todosList={this.props.todosList}

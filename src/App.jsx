@@ -77,32 +77,6 @@ class App extends Component {
 
     this.state.todosList.push(newItem);
     this.setState({ todosList: this.state.todosList, addTodo: "", selectPriority: "" });
-
-    // const list = [...this.state.todos];
-    // list.push(entryTodo);
-    // this.setState({list, addTodo: ""});
-
-    // this.setState({
-    //   todos: [...this.state.todos, newItem],
-    //   addTodo: '',
-    //   currPriority: '0'
-    // });
-
-    // event.preventDefault();
-    // if(this.state.addTodo===""){
-    //   alert("Add a ToDo before adding to the list");
-    //   return false
-    // }
-
-    // const addTodo = {
-    //   id: 1,
-    //   title: this.props.addTodo,
-    //   completed: false
-    // };
-    // const todos = [...this.state.todos];
-    // todos.push(addTodo);
-    // this.setState({todos, addTodo: "", selectPriority: ""});
-    console.log("clciked");
   }
 
   render() {
